@@ -1,44 +1,43 @@
 //Funcion para llenar dinamicamente
 //la tienda
 
-export function llenarTienda() {
+let productosBD = [
+
+    { nombre: "Batimovil a escala", precio: 400000, foto: "../img/tienda1.jpg", descripcion: "Batimovil a escala de la ultima pelicula" },
+    { nombre: "Camiseta Batman", precio: 80000, foto: "../img/tienda2.jpg", descripcion: "Camiseta original DC" },
+    { nombre: "Gorra Batman", precio: 50000, foto: "../img/tienda3.jpg", descripcion: "Gorra original DC" },
+    { nombre: "Bati termo DC", precio: 35000, foto: "../img/tienda4.jpg", descripcion: "Termo para bati chocolate" },
+    { nombre: "Batmav v Superman", precio: 300000, foto: "../img/tienda5.jpg", descripcion: "Imagen a escala de la pelicula Batman v Superman" },
+    { nombre: "Bati morral Totto", precio: 80000, foto: "../img/tienda6.jpg", descripcion: "Bolso original DC" },
+    { nombre: "Silla Gaming Batman", precio: 2000000, foto: "../img/tienda7.jpg", descripcion: "Silla comoda y original DC" },
+    { nombre: "caja de comics Batman", precio: 300000, foto: "../img/tienda8.jpg", descripcion: "comics Batman originales" },
+    { nombre: "Bati caja sorpresa", precio: 250000, foto: "../img/tienda9.jpg", descripcion: "Caja sorpresa con productos de batman" },
+    { nombre: "Bati lonchera totto", precio: 80000, foto: "../img/tienda10.jpg", descripcion: "Lonchera para llevar tus bati alimentos" } // comas que separaban los objetos del arreglo
+
+]
+function llenarTienda(productos) {
 
 
-    let productos = [
-
-        { nombre: "Batimovil a escala", precio: 400000, foto: "../img/tienda1.jpg", descripcion: "Batimovil a escala de la ultima pelicula" }
-        { nombre: "Camiseta Batman", precio: 80000, foto: "../img/tienda2.jpg", descripcion: "Camiseta original DC" }
-        { nombre: "Gorra Batman", precio: 50000, foto: "../img/tienda3.jpg", descripcion: "Gorra original DC" }
-        { nombre: "Bati termo DC", precio: 35000, foto: "../img/tienda4.jpg", descripcion: "Termo para bati chocolate" }
-        { nombre: "Batmav v Superman", precio: 300000, foto: "../img/tienda5.jpg", descripcion: "Imagen a escala de la pelicula Batman v Superman" }
-        { nombre: "Bati morral Totto", precio: 80000, foto: "../img/tienda6.jpg", descripcion: "Bolso original DC" },
-        { nombre: "Silla Gaming Batman", precio: 2000000, foto: "../img/tienda7.jpg", descripcion: "Silla comoda y original DC" }
-        { nombre: "caja de comics Batman", precio: 300000, foto: "../img/tienda8.jpg", descripcion: "comics Batman originales" }
-        { nombre: "Bati caja sorpresa", precio: 250000, foto: "../img/tienda9.jpg", descripcion: "Caja sorpresa con productos de batman" }
-        { nombre: "Bati lonchera totto", precio: 80000, foto: "../img/tienda10.jpg", descripcion: "Lonchera para llevar tus bati alimentos" }
-
-    ]
 
     //Rutina para recorrer el arreglo y crear las tarjetas de cada producto
 
     //1. crear una referencia a un elemento "PADRE" o "BASE" donde anclaremos los demas
-    let fila = document.createElementById("fila")
+    let fila = document.createElement("fila")
 
     //2. Necesito recorrer un arreglo
-    productos.foreach(function () {
+    productos.forEach(function (producto) {  // foreach por forEach  y el auxiliar producto
 
         //3. CREAMOS LOS ELEMENTOS NECESARIOS PARA PINTAR LOS PRODUCTOS
         let columna = document.createElement("col-4")
         columna.classList.add("col-md-12")
 
         let tarjeta = document.createElement("div")
-        tarjeta.classList.add("card")
-        tarjeta.classList.add("h-100")
-
+        tarjeta.classList.add("card","h-100")  // optimizar codigo juntando las clases 
+        
         let imagen = document.createElement("img")
-        imagen.classList.add("card-img-top")
-        imagen.classList.add("p-3")
-        imagen.classList.add("h-100")
+        imagen.classList.add("card-img-top","p-3","h-100")
+        
+        
         imagen.src = producto.foto
 
         let separador = document.getElementById("hr")
@@ -47,14 +46,11 @@ export function llenarTienda() {
         separador.classList.add("d-block")
 
         let nombre = document.createElement("h5")
-        nombre.classList.add("fw-bold")
-        nombre.classList.add("text-center")
-        nombre.classList.add("mx-3")
+        nombre.classList.add("fw-bold","text-center","mx-3")
         nombre.textContent = producto.nombre
 
         let precio = document.createElement("h6")
-        precio.classList.add("text-center")
-        precio.classList.add("text-muted")
+        precio.classList.add("text-center","text-muted")
         precio.textContent = producto.precio
 
         let botonAmpliarInfo = document.createElement("button")
@@ -84,3 +80,5 @@ export function llenarTienda() {
 
 
 }
+
+console.log(llenarTienda(productosBD))
